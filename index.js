@@ -14,9 +14,6 @@ module.exports.onRequest = ( req, res ) => {
         case '/getOrderBooks': {
             return routes.getOrderBooks( req, res, url );
         }
-        case '/plotly': {
-            return res.end();
-        }
         default: {
             res.statusCode = 204;
             res.end();
