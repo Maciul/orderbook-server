@@ -3,7 +3,6 @@
 const utils = require( './utilities' );
 const c = require( './constants' );
 
-// Optout for Your Online Choices.
 module.exports.getOrderBooks = async ( req, res, url ) => {
     if ( utils.isValidRequest( url ) === false ) {
         res.writeHead( 400, c.INVALID_REQUEST_ERROR );

@@ -18,7 +18,7 @@ module.exports.promiseRequest = ( url ) => {
 };
 
 module.exports.formatBittrexData = ( results ) => {
-    // format { Quantity: 12.052, Rate: 0.05469738 } --> [ rate, quantity ]
+    // converts { Quantity: 12.052, Rate: 0.05469738 } --> [ rate, quantity ]
     const formattedData = results.map( order => {
         return [ order.Rate, order.Quantity ];
     } );
