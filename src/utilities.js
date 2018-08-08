@@ -29,7 +29,7 @@ module.exports.isValidRequest = ( url ) => {
     const isString = function( element ) {
         return element && typeof element === 'string';
     };
-    const currencyPair = url.query.market && url.query.market.split( '_' );
+    const currencyPair = url.query.market ?  url.query.market.split( '_' ) : false;
 
     return currencyPair && currencyPair.length === 2 && currencyPair.every( isString );
 };
