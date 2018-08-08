@@ -7,6 +7,7 @@ const parseURL = require( 'url' ).parse;
 
 module.exports.onRequest = ( req, res ) => {
     const url = parseURL( req.url, true );
+
     switch ( url.pathname ) {
         case '/healthcheck': {
             return res.end();
@@ -22,5 +23,16 @@ module.exports.onRequest = ( req, res ) => {
 };
 
 this.server = http.createServer( this.onRequest );
-this.server.listen( c.PORT );
+if ( process.env.NODE_ENV === 'test' ) {
+    exports.listen = function() {
+        this.server.listen.apply( this.server, arguments );
+    };
+
+    exports.close = function ( cb ) {
+        this.server.close( cb );
+    };
+} else {
+    this.server.listen( c.PORT );
+}
+
 console.log( `server running on ${c.PORT}` );

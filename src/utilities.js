@@ -17,7 +17,7 @@ module.exports.promiseRequest = ( url ) => {
     } );
 };
 
-module.exports.formatData = ( results ) => {
+module.exports.formatBittrexData = ( results ) => {
     // format { Quantity: 12.052, Rate: 0.05469738 } --> [ rate, quantity ]
     const formattedData = results.map( order => {
         return [ order.Rate, order.Quantity ];
@@ -27,11 +27,11 @@ module.exports.formatData = ( results ) => {
 
 module.exports.isValidRequest = ( url ) => {
     const isString = function( element ) {
-        return typeof element === 'string';
+        return element && typeof element === 'string';
     };
     const currencyPair = url.query.market && url.query.market.split( '_' );
 
-    return currencyPair && currencyPair.every( isString );
+    return currencyPair && currencyPair.length === 2 && currencyPair.every( isString );
 };
 
 module.exports.sortBooks = ( orderBooks ) => {
@@ -65,4 +65,4 @@ module.exports.cumulateReduceFN = ( sum, order ) => {
 module.exports.endConnection = ( res, orderBookToSend ) => {
     res.setHeader( 'Access-Control-Allow-Origin', '*' );
     res.end( JSON.stringify( orderBookToSend ) );
-}
+};

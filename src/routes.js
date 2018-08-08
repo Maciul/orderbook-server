@@ -21,8 +21,8 @@ module.exports.getOrderBooks = async ( req, res, url ) => {
 
     if ( results ) {
         if ( results[0].success ) {
-            orderBookToSend.bittrex.asks = utils.formatData( results[0].result.sell );
-            orderBookToSend.bittrex.bids = utils.formatData( results[0].result.buy );
+            orderBookToSend.bittrex.asks = utils.formatBittrexData( results[0].result.sell );
+            orderBookToSend.bittrex.bids = utils.formatBittrexData( results[0].result.buy );
         }
         if ( !results[1].error ) {
             orderBookToSend.poloniex = results[1];
