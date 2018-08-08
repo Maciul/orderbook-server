@@ -15,14 +15,14 @@
     "exchange1": {
         "asks": [
             [ "Rate", "Quantity", "Cumulated Quantity" ],
-            [ ... ]
+            ...
               ],
         "bids": [ 
             [ "Rate", "Quantity", "Cumulated Quantity" ],
-            [ ... ]
+            ...
             ]
     },
-    "exchange2": {...}
+    "exchange2": {} ...
 }
 ```
 
