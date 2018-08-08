@@ -37,6 +37,12 @@ describe( 'Utilities tests', ()=>{
         expect( result ).toBeFalsy();
     } );
 
+    it( 'isValidRequest: should return false if request does not have a market param', () => {
+        url.query = {};
+        let result = utils.isValidRequest( url );
+        expect( result ).toBeFalsy();
+    } );
+
     it( 'sortBooks: should sort asks and bids arrays', () => {
         utils.sortBooks( mockData.sampleOrderBook );
         expect( mockData.sampleOrderBook.bittrex.asks ).toEqual( [ [ 1, 1 ], [ 4, 4 ], [ 5, 5 ] ] );
