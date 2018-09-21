@@ -52,8 +52,10 @@ module.exports.sortBooks = ( orderBooks ) => {
 
 module.exports.cumulateData = ( orderBooks ) => {
     for ( let book in orderBooks ) {
-        orderBooks[book].asks.reduce( this.cumulateReduceFN, 0 );
-        orderBooks[book].bids.reduce( this.cumulateReduceFN, 0 );
+        if ( orderBooks[book].asks && orderBooks[book].bids ) {
+            orderBooks[book].asks.reduce( this.cumulateReduceFN, 0 );
+            orderBooks[book].bids.reduce( this.cumulateReduceFN, 0 );
+        }
     }
 };
 
